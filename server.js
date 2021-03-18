@@ -44,9 +44,8 @@ function sendData (req, res) {
 // function addData(req, res){
 //     data.push(req.body)
 //     console.log(data)
-
 // }
-const weatherData = [];
+
 //POST route
 app.post('/addData', addData);
 
@@ -55,8 +54,7 @@ function addData (req,res){
     newEntry = {
         temp: req.body.temp,
         date: req.body.date,
-        userData: req.body.userData
+        feeling: req.body.feeling
     }
-    weatherData.push(newEntry)
-    res.send(projectData);
+    res.send(projectData = newEntry);
 };

@@ -1,5 +1,5 @@
 /* Global Variables */
-let baseURL = 'http://api.openweathermap.org/data/2.5/weather?q='
+let baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip='
 let apiKey = '&appid=6cdc72475468a3946af98e684716f65d';
 // Create a new date instance dynamically with JS
 let d = new Date();
@@ -16,10 +16,10 @@ function performAction(e){
         console.log(data);
         //add data to post request
         postData('/addData', {temp: data.main.temp, date: newDate, feeling:feeling});
-    })
-    .then (
         updateUI()
-    )
+        
+    })
+   
 }
 
 const getWeather = async (baseURL, zip, key)=>{
@@ -59,12 +59,12 @@ const updateUI = async () => {
   const request = await fetch('/all');
   try{
     const allData = await request.json();
-    document.getElementById('temp').innerHTML = allData[0].temp;
-    document.getElementById('date').innerHTML = allData[0].date;
-    document.getElementById('content').innerHTML = allData[0].feeling;
+    document.getElementById('temp').innerHTML = allData.temp;
+    document.getElementById('date').innerHTML = allData.date;
+    document.getElementById('content').innerHTML = allData.feeling;
 
   }catch(error){
-    console.log("error iliyopatikana updateui", error);
+    console.log("error", error);
   }
 }
 // postData('/addData', {temp:42, date: newDate, userData: 'whatsapp'});
