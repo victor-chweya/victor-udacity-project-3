@@ -34,9 +34,18 @@ function listening() {
 // GET route
 app.get('/all', sendData);
 
-function sendData (request, response) {
-  response.send(projectData);
+function sendData (req, res) {
+  res.send(projectData);
 };
+
+// const data = [];
+
+// app.post('/all', addData)
+// function addData(req, res){
+//     data.push(req.body)
+//     console.log(data)
+
+// }
 const weatherData = [];
 //POST route
 app.post('/addData', addData);
@@ -49,6 +58,5 @@ function addData (req,res){
         userData: req.body.userData
     }
     weatherData.push(newEntry)
-    res.send(weatherData);
-    console.log(weatherData);
+    res.send(projectData);
 };
